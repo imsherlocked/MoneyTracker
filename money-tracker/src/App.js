@@ -6,7 +6,20 @@ function App() {
   const [description, setDescription] = useState();
   const [date, setDate] = useState();
 
-  function handleEvent() {}
+  function handleEvent(ev) {
+    ev.preventDefault();
+    const url = process.env.REACT_APP_API_URL + "/transaction";
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ name, description, date }),
+    }).then((response) => {
+      response.json().then((json) => {
+        console.log("result", json);
+      });
+    });
+    console.log(url);
+  }
   return (
     <main>
       <h1>
