@@ -1,21 +1,42 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [date, setDate] = useState();
+
+  function handleEvent() {}
   return (
     <main>
       <h1>
         $400 <span>.00</span>
       </h1>
-      <form>
+      <form onSubmit={handleEvent}>
         <div className="basics">
-          <input type="text" placeholder={"+200 new Samsung Tv"}></input>
-          <input type="datetime-local"></input>
+          <input
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            placeholder={"+200 new Samsung Tv"}
+          ></input>
+          <input
+            type="datetime-local"
+            value={date}
+            onChange={(event) => setDate(event.target.value)}
+          ></input>
         </div>
         <div className="decription">
-          <input type="text" placeholder={"decription"}></input>
+          <input
+            type="text"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            placeholder={"decription"}
+          ></input>
         </div>
-        <button tyoe="submit">Add new Transactions</button>
+        <button tyoe="submit" onClick={handleEvent}>
+          Add new Transactions
+        </button>
       </form>
 
       <div className="transactions">
